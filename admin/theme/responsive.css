@@ -1,0 +1,78 @@
+/*
+===========================================================================
+ EXCLUSIVE ON themeforest.net
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Template Name   : Cyberweb - Responsive One Page Multipurpose Template
+ Author          : bootWeb
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Copyright (c) 2017 - bootWeb - https://themeforest.net/user/bootweb
+===========================================================================
+*/
+
+/*================================================
+            Table of contents  
+==================================================
+ 
+1. Layout greater than 768px
+2. Layout lesser than 860px
+3. Layout lesser than 768px
+4. Subscribe form
+
+====================================================
+            End table content 
+===================================================*/
+
+/*-------------------------------------------------------*/
+/* Layout greater than 768px */
+/*-------------------------------------------------------*/
+@media(min-width:768px) {
+	.custom-navbar {
+		border-bottom: 0;
+	}
+	.custom-navbar.top-nav-collapse {
+		background: #ffffff;
+		padding: 0px 0;
+	}
+	#home h1 {
+		font-weight: bold;
+		font-size: 50px;
+	}
+}
+
+/*-------------------------------------------------------*/
+/* Layout lesser than 860px */
+/*-------------------------------------------------------*/
+@media (max-width:860px){
+	.controller {
+		display: none;
+	}
+}
+
+/*-------------------------------------------------------*/
+/* Layout lesser than 768px */
+/*-------------------------------------------------------*/
+@media (max-width:768px){
+	.navbar-collapse {
+		text-align:center;  
+	}
+	.custom-navbar .nav li a {
+		line-height:20px;
+		overflow:hidden;
+	}
+	.custom-navbar .navbar-brand {
+	    position: relative;
+	    bottom: 5px;
+	}
+	.scroll-mob {
+		background-color: #111 !important;
+	}
+}
+
+/*-------------------------------------------------------*/
+/* Subscribe Form */
+/*-------------------------------------------------------*/
+@media(max-width: 990px) and (min-width: 460px) {
+	#footer .input-group {
+		width: 60%;
+	}
+}
