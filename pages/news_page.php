@@ -13,6 +13,9 @@ $query = mysqli_query($conn, $sql);
 
 $result = mysqli_fetch_assoc($query);
 
+
+
+mysqli_query($conn,"UPDATE t_news set visit=visit+1 WHERE id=$id ")
 //--------------------------------------------------
 
 //$visit=+1;

@@ -1,8 +1,7 @@
 <?php
 session_start();
 include "db.php";
-
-include "../jdf/jdf.php"
+include "function/global.php";
 ?>
 
 <!DOCTYPE html>

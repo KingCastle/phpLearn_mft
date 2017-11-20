@@ -31,17 +31,19 @@ $cat = mysqli_fetch_all($catQuery, MYSQLI_ASSOC);
 		c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"/>
 
         </svg>
-                        <a href="#"><?php echo $item['title'] ?></a>
+                        <a href="?cat_id=<?php echo $item['id'] ?>"><?php echo $item['title'] ?></a>
                         <?php
                         // category child
-                        $childQuery = mysqli_query($conn, "select * from t_category where parent_id!=0");
+
+                        $parent=$item['id'];
+                        $childQuery = mysqli_query($conn, "select * from t_category where parent_id=$parent");
                         $childResult = mysqli_fetch_all($childQuery, MYSQLI_ASSOC);
 
                         foreach ($childResult as $ch) {
                             if ($item['id'] == $ch['parent_id']) {
                                 ?>
                                 <ul class="sub-menu">
-                                    <li><a href="#"><?php echo $ch['title']; ?></a></li>
+                                    <li><a href="?cat_id=<?php echo  $ch['id'] ?>"><?php echo $ch['title']; ?></a></li>
                                 </ul>
                             <?php }
                         } ?>
@@ -59,25 +61,49 @@ $cat = mysqli_fetch_all($catQuery, MYSQLI_ASSOC);
 
 <?php
 
+
+
+
+
 $sql = "
-                SELECT
-                    t_news.id,
-                    title,
-                    summary,
-                    create_time,
-                    fullname AS author 
-                FROM
-                    t_news
-                    INNER JOIN t_user ON t_news.user_id = t_user.id 
-                WHERE
-                    t_news.`delete` = 0
+      SELECT
+t_news.id,
+t_news.title,
+t_news.summary,
+t_news.create_time,
+t_news.visit,
+t_user.fullname AS author,
+t_category.title as category
+FROM
+t_news
+left JOIN t_user ON t_news.user_id = t_user.id
+Left JOIN t_category ON t_news.id_cat = t_category.id
+WHERE
+t_news.`delete` = 0
                 ";
 
+
+
+if (isset($_GET['cat_id'])){
+    $cat_id=$_GET['cat_id'];
+    $sql.="and id_cat=$cat_id  or parent_id=$cat_id";
+}
+
+//print_r($sql);exit;
+
+//print_r($sql);
+
+
 $newsQuery = mysqli_query($conn, $sql);
+
+$count=mysqli_num_rows($newsQuery);
+
+
 $result = mysqli_fetch_all($newsQuery, MYSQLI_ASSOC);
 //echo '<pre>';
-//print_r($result);
+if ($count>=1){
 foreach ($result as $news) {
+
     ?>
 
     <div class="tip-item clearfix">
@@ -87,7 +113,7 @@ foreach ($result as $news) {
         <div class="tip-text clearfix">
             <h3><?php echo $news['title'];?></h3>
             <p>
-<?php echo $news['summary']; ?>
+            <?php echo m_summary($news['summary']); ?>
             </p>
         </div>
         <div class="tip-elements clearfix">
@@ -100,7 +126,7 @@ foreach ($result as $news) {
       </svg>
       </span>
                 <span>تعداد بازدید : </span>
-                <span>5</span>
+                <span><?php echo $news['visit'] ?></span>
             </div>
             <div class="date">
       <span>
@@ -119,9 +145,12 @@ foreach ($result as $news) {
             <div class="more-btn">
                 <a href="news_page.php?id=<?php echo $news['id'] ?>">ادامه مطلب</a>
             </div>
+
+            <span>تاریخ : <?php echo m_date($news['create_time']); ?></span><br>
+            <span>دسته : <?php echo $news['category']; ?></span>
         </div>
     </div>
-<?php } ?>
+<?php } } else { echo '<center>دسته بندی وجود ندارد.</center>'; }?>
 
     </div>
 
