@@ -1,6 +1,10 @@
 <?php
 session_start();
-include "db.php"; ?>
+include "db.php";
+
+include "../jdf/jdf.php"
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
