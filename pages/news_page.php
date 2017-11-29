@@ -135,6 +135,9 @@ mysqli_query($conn,"UPDATE t_news set visit=visit+1 WHERE id=$id ")
             fill="#FFFFFF"/>
       </svg>
       </span>
+
+
+
                             <span>1395/6/28</span>
                         </div>
 
