@@ -1,0 +1,6 @@
+{
+    "require": {
+        "samayo/bulletproof": "3.2.*",
+        "catfan/Medoo": "^1.5"
+    }
+}
