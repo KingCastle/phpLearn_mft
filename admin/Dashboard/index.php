@@ -2,6 +2,7 @@
 session_start();
 
 include "../../pages/db.php";
+include "../../function/global.php";
 
 include('page_include.php');
 
