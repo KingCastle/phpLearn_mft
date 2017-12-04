@@ -6,7 +6,7 @@ switch ($Part) {
     case 'news':
         $path = 'pages/news.php';
         break;
-    case 'newsForm':
+    case 'newsform':
         $path = 'pages/newsform.php';
         break;
 

@@ -64,8 +64,10 @@
                                 t_user.fullname as 'author'
                                 FROM
                                 t_news
-                                INNER JOIN t_category ON t_news.id_cat = t_category.id
-                                INNER JOIN t_user ON t_news.user_id = t_user.id
+                                left JOIN t_category ON t_news.id_cat = t_category.id
+                                left JOIN t_user ON t_news.user_id = t_user.id
+                                
+                                order by id desc
                                 ";
                                 $query = mysqli_query($conn, $sql);
 
