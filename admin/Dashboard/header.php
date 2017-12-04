@@ -118,13 +118,12 @@
                 <li class="treeview">
                     <a>
                         <i class="fa fa-newspaper-o"></i>
-                        <span>مطالب</span>
+                        <span>اخبار</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="Articles.html"><i class="fa fa-plus"></i> تمامی مطالب </a></li>
-                        <li><a href="#"><i class="fa fa-check"></i> دیدگاه ها</a></li>
-                        <li><a href="#"><i class="fa fa-file-archive-o"></i> دسته بندی ها</a></li>
+                        <li><a href="?part=news"><i class="fa fa-plus"></i> لیست اخبار </a></li>
+                        <li><a href="#"><i class="fa fa-file-archive-o"></i>دسته بندی اخبار</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
