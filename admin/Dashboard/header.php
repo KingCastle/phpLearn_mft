@@ -122,7 +122,9 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
+                        <?php if(user_access('news')) { ?>
                         <li><a href="?part=news"><i class="fa fa-plus"></i> لیست اخبار </a></li>
+                        <?php } ?>
                         <li><a href="#"><i class="fa fa-file-archive-o"></i>دسته بندی اخبار</a></li>
                     </ul>
                 </li>

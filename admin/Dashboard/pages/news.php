@@ -1,4 +1,18 @@
-﻿<?php ob_start(); ?>
+﻿<?php ob_start();
+
+user_access('news');
+
+
+if (isset($_POST['delete'])) {
+
+    $id = $_POST['delete'];
+    mysqli_query($conn, "DELETE FROM t_news
+WHERE id=$id");
+
+}
+
+
+?>
 
     <section class="content">
         <div class="row">
@@ -60,14 +74,14 @@
                                 $sql = "
                                 SELECT
                                 t_news.*,
-                                t_category.title as 'category',
-                                t_user.fullname as 'author'
+                                t_category.title AS 'category',
+                                t_user.fullname AS 'author'
                                 FROM
                                 t_news
-                                left JOIN t_category ON t_news.id_cat = t_category.id
-                                left JOIN t_user ON t_news.user_id = t_user.id
+                                LEFT JOIN t_category ON t_news.id_cat = t_category.id
+                                LEFT JOIN t_user ON t_news.user_id = t_user.id
                                 
-                                order by id desc
+                                ORDER BY id DESC
                                 ";
                                 $query = mysqli_query($conn, $sql);
 
@@ -116,11 +130,14 @@
                                         </th>
                                         <th>
                                             <a class="btn btn-info btn-sm glyphicon glyphicon-edit"
-                                               href="@Url.Action(MVC.CpAdmin.News.Edit(item.Id))"></a>
+                                               href="?part=newsform&id=<?= $item['id'] ?>"></a>
                                         </th>
                                         <th>
-                                            <a class="btn btn-danger btn-sm"
-                                               href="@Url.Action(MVC.CpAdmin.News.Delete(item.Id))">×</a>
+                                            <form action="" method="post">
+                                                <button type="submit" name="delete" value="<?= $item['id'] ?>"
+                                                        class="btn btn-danger btn-sm">×
+                                                </button>
+                                            </form>
                                         </th>
                                     </tr>
                                 <?php } ?>
