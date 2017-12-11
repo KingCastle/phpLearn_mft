@@ -31,7 +31,6 @@ WHERE t_user.id=4
     if (in_array($string, $access)) {
         return true;
     } else {
-
         header("Location:?part=Main");
     }
 
