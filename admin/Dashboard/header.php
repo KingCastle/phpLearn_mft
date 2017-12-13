@@ -148,7 +148,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="User.html"><i class="fa fa-dollar"></i> تمامی کاربران </a>
+                            <a href="?part=users"><i class="fa fa-dollar"></i> تمامی کاربران </a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-line-chart"></i> افزودن کاربر</a>

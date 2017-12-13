@@ -1,17 +1,25 @@
 <?php include "../header.php";
 
+function g_CheckParameter($par)
+{
+        $Return1=stripslashes($par);
+        $Return2=htmlspecialchars($Return1,ENT_QUOTES);
+        $Return3=htmlentities($Return2, ENT_QUOTES, 'UTF-8');
+        $Return4=strip_tags($Return3);
+        return $Return4;
+}
+
 
 if (isset($_POST['ok'])) {
 
 
-    echo '<pre>';
 
 
-    $fullname = $_POST['fullname'];
-    $username = $_POST['username'];
+    $fullname = g_CheckParameter($_POST['fullname']);
+    $username = g_CheckParameter($_POST['username']);
     $password = sha1($_POST['password']);
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
+    $age = g_CheckParameter($_POST['age']);
+    $gender = g_CheckParameter($_POST['gender']);
 
     if(!empty($username) && !empty($password)){
 
@@ -24,14 +32,14 @@ if (isset($_POST['ok'])) {
         insert into t_user(fullname,username,password,age,gender)
         VALUES ('$fullname','$username','$password','$age','$gender')
         ";
-
+//            print_r($sql);exit;
             $register=mysqli_query($conn,$sql);
 
 
 
             if ($register){
 
-                echo "<script> alert(\"ثبت نام  انجام شد\"); </script>";
+              //  echo "<script> alert(\"ثبت نام  انجام شد\"); </script>";
                 header("Location:login.php");
             }
         } else {
